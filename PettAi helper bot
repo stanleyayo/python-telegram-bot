@@ -1,0 +1,17 @@
+from telegram import Update
+from telegram.ext import Updater, CommandHandler, CallbackContext
+
+# 1. Replace with your bot token from @BotFather
+TOKEN = "YOUR_TOKEN"
+
+# 2. Define a function to handle the /start command
+def start(update: Update, context: CallbackContext):
+    update.message.reply_text("Hello! I'm your PettAI Assistant. 🐾")
+
+# 3. Set up the bot
+updater = Updater(TOKEN)  # Connect to Telegram
+updater.dispatcher.add_handler(CommandHandler('start', start))  # Add the /start command
+
+# 4. Start the bot
+updater.start_polling()  # Check for new messages every second
+updater.idle()  # Keep the bot running
